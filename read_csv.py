@@ -6,7 +6,7 @@ def day_string_to_int(day):
     pass
 
 def read_csv(fname):
-    stock_day_info_list.clear()
+    del stock_day_info_list[:]
     with open(fname,  'rb') as csvfile:
         spamreader = csv.reader(csvfile,  delimiter=',',  quotechar='|')
         for row in spamreader:

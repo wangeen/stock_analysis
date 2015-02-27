@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 
+class day_session:
+    def __init__(self, start_day, end_day):
+        self.start_day = start_day
+        self.end_day = end_day
+        pass
+    pass
+
 class stock_day_info:
     def __init__(self, day, open, high, low, close, volumn,total,  turnover):
         self.day = day
