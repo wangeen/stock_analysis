@@ -6,16 +6,20 @@ def theory_maker_stuck():
     ''' if a maker is stuck, he should try his best to promote the price'''
     pass
 
-def theory_down_too_much(percent):
-    '''the price drop too much'''
+def theory_price_down_too_fast(percent):
+    '''价格下降过快'''
     pass
 
-def theory_up_too_much(percent):
-    '''the price up too much'''
+def theory_price_up_too_fast(percent):
+    '''价格上升过快'''
     pass
 
 def theory_stock_keep_time():
-    '''the average time for each stock kept by one owner'''
+    '''每股平均保留时间'''
 
+    pass
+
+def theory_small_():
+    '''小区间震动，大成交量'''
     pass
 
