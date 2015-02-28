@@ -27,17 +27,18 @@ def read_csv(fname):
             #12: 成交金额,
             #13: 总市值,
             #14: 流通市值
-            str_day = row[0]
-            str_close = row[3]
-            str_high = row[4]
-            str_low = row[5]
-            str_open = row[6]
-            str_turnover = row[10]
-            str_volumn = row[11]
-            str_total = row[12]
-            #print ',  '.join(row)
-            one_day_info = stock_day_info(day=str_day, open=str_open, high=str_high, low=str_low, close=str_close, volumn=str_volumn, total=str_total, turnover=str_turnover)
-            one_day_info.print_day_info()
-            stock_day_info_list.append(one_day_info)
-            #print row
+            try:
+                str_day = row[0].strip()
+                str_close = float(row[3].strip())
+                str_high = float(row[4].strip())
+                str_low = float(row[5].strip())
+                str_open = float(row[6].strip())
+                str_turnover = float(row[10].strip())
+                str_volumn = float(row[11].strip())
+                str_total = float(row[12].strip())
+                one_day_info = stock_day_info(day=str_day, open=str_open, high=str_high, low=str_low, close=str_close, volumn=str_volumn, total=str_total, turnover=str_turnover)
+                one_day_info.print_day_info()
+                stock_day_info_list.append(one_day_info)
+            except:
+                pass
     pass
