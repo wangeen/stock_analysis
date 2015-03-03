@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv, sys
-from stock_class import stock_day, stock_day_list
+from stock_class import *
 
 def theory_up_down_days_count():
     '''up and down days count'''
@@ -66,9 +66,10 @@ def theory_maker_stuck():
 
 def theory_price_down_too_fast(percent):
     '''价格下降过快'''
+
     pass
 
-def theory_price_up_too_fast(percent=8):
+def theory_price_change_fast(percent=8):
     '''价格上升过快'''
     percent /= 100.0
     period = theory_period()
@@ -77,21 +78,21 @@ def theory_price_up_too_fast(percent=8):
         print "the total days is less than period"
         return
     i = 0
-    last_price = stock_day_list[i].close
+    last_day = stock_day_list[i]
+    last_price = last_day.close
     i+=1
     period_current = 0
     while i<(total_days-period):
-        print i
         for j in range(0,period):
-            print i+j
             current_price = stock_day_list[i+j].close
             if (current_price-last_price)/last_price>percent:
-                pass
-                #print "up too fast"
-                #stock_day_list[i+j].print_day()
-            else:
-                pass
-        last_price = stock_day_list[i].close
+                last_day.up_fast = property_up(stock_day_list[i+j])
+                break
+            elif (current_price-last_price)/last_price<-percent:
+                last_day.dw_fast = property_dw(stock_day_list[i+j])
+                break
+        last_day =  stock_day_list[i]
+        last_price = last_day.close
         i+=1
         pass
     pass
