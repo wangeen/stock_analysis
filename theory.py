@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import csv, sys
-from stock_class import stock_day_info, stock_day_info_list
+from stock_class import stock_day, stock_day_list
 
 def theory_up_down_days_count():
     '''up and down days count'''
-    previous_close = stock_day_info_list[0].close
+    previous_close = stock_day_list[0].close
     up_days = 0.0
     down_days = 0.0
     equal_days = 0.0
-    for item in stock_day_info_list[1:]:
+    for item in stock_day_list[1:]:
         close = item.close
         diff = close-previous_close
         if diff>0:
@@ -27,12 +27,12 @@ def theory_up_down_days_count():
 
 def theory_pre_next_count(previous_up=True):
     '''pre up, next count'''
-    previous_previous_close = stock_day_info_list[0].close
-    previous_close = stock_day_info_list[1].close
+    previous_previous_close = stock_day_list[0].close
+    previous_close = stock_day_list[1].close
     up_days = 0.0
     down_days = 0.0
     equal_days = 0.0
-    for item in stock_day_info_list[2:]:
+    for item in stock_day_list[2:]:
         close = item.close
         diff_previous = previous_close-previous_previous_close
         if previous_up==True and diff_previous>0:
@@ -72,23 +72,26 @@ def theory_price_up_too_fast(percent=8):
     '''价格上升过快'''
     percent /= 100.0
     period = theory_period()
-    total_days = len(stock_day_info_list)
+    total_days = len(stock_day_list)
     if total_days<period:
         print "the total days is less than period"
         return
     i = 0
-    last_price = stock_day_info_list[i].close
+    last_price = stock_day_list[i].close
     i+=1
     period_current = 0
-    while i<total_days:
+    while i<(total_days-period):
+        print i
         for j in range(0,period):
-            current_price = stock_day_info_list[i+j].close
+            print i+j
+            current_price = stock_day_list[i+j].close
             if (current_price-last_price)/last_price>percent:
-                print "up too fast"
-                stock_day_info_list[i+j].print_day_info()
+                pass
+                #print "up too fast"
+                #stock_day_list[i+j].print_day()
             else:
                 pass
-        last_price = stock_day_info_list[i].close
+        last_price = stock_day_list[i].close
         i+=1
         pass
     pass

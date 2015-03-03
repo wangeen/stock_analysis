@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-class day_session:
+class day_pair:
     def __init__(self, start_day, end_day):
         self.start_day = start_day
         self.end_day = end_day
         pass
     pass
 
-class stock_day_info:
+class stock_day:
     def __init__(self, day, open, high, low, close, volumn,total,  turnover):
         self.day = day
 
@@ -21,7 +21,7 @@ class stock_day_info:
         self.turnover = turnover
         pass
 
-    def print_day_info(self):
+    def print_day(self):
         print '''日期:''', self.day
         print '''开盘价:''', self.open
         print '''最高价:''', self.high
@@ -33,4 +33,4 @@ class stock_day_info:
         print '''成交金额:''', self.total
         pass
 
-stock_day_info_list = []
+stock_day_list = []
