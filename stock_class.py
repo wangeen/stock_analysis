@@ -14,6 +14,7 @@ class day_pair:
         pass
     pass
 
+# up fast property of day
 class property_up:
     def __init__(self, day):
         self.day = day
@@ -26,7 +27,7 @@ class property_up:
         pass
     pass
 
-
+# down fast property of day
 class property_dw:
     def __init__(self, day):
         self.day = day
@@ -39,7 +40,7 @@ class property_dw:
         pass
     pass
 
-
+# the stock price and volumn information of one day
 class stock_day:
     def __init__(self, day, open, high, low, close, volumn,total,  turnover):
         self.day = day
@@ -49,21 +50,24 @@ class stock_day:
         self.low = low
         self.close = close
 
+        self.average = total/volumn # average price should be more reasonable
+
         self.volumn = volumn
         self.total = total
         self.turnover = turnover
         pass
 
     def log(self):
-        print '''日期:''', self.day
+        print '''  日期:''', self.day
         print '''开盘价:''', self.open
         print '''最高价:''', self.high
         print '''最低价:''', self.low
         print '''收盘价:''', self.close
+        print '''  均价:''', self.average
 
-        print '''换手率(%):''', self.turnover
+        print ''' 换手率(%):''', self.turnover
         print '''成交量(手):''', self.volumn
-        print '''成交金额:''', self.total
+        print '''  成交金额:''', self.total
         pass
     pass
 

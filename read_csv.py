@@ -38,6 +38,7 @@ def read_csv(fname):
                 str_total = float(row[12].strip())
                 if str_close>0 and str_high>0 and str_low>0 and str_open>0:
                     one_day_info = stock_day(day=str_day, open=str_open, high=str_high, low=str_low, close=str_close, volumn=str_volumn, total=str_total, turnover=str_turnover)
+                    #one_day_info.log()
                     stock_day_list.append(one_day_info)
             except:
                 pass

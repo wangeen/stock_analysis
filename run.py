@@ -14,7 +14,7 @@ def script(cmd):
 if __name__  == "__main__":
     read_csv("sample/600561.csv")
     theory_up_down_days_count()
-    theory_pre_next_count()
+    #theory_pre_next_count()
     theory_price_change_fast(10)
 
     print_up_fast()
