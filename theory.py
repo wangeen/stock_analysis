@@ -3,6 +3,10 @@ import csv, sys
 from stock_class import *
 
 # my database for all data
+# 资金回流
+# 价格的大波动和资金流向的关系
+# 少量的投入就会引起价格的大波动
+# 利用T＋1分析问题
 
 def theory_up_down_days_count():
     print '''检测上涨下降天数'''

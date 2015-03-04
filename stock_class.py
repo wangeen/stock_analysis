@@ -59,15 +59,19 @@ class stock_day:
 
     def log(self):
         print '''  日期:''', self.day
-        print '''开盘价:''', self.open
-        print '''最高价:''', self.high
-        print '''最低价:''', self.low
-        print '''收盘价:''', self.close
-        print '''  均价:''', self.average
+        print '''开盘价:{0:.2f}'''.format( self.open)
+        print '''最高价:{0:.2f}'''.format( self.high)
+        print '''最低价:{0:.2f}'''.format( self.low)
+        print '''收盘价:{0:.2f}'''.format( self.close)
+        print '''  幅度:{0:.2f}'''.format((self.close-self.open)/self.open*100)
+        print '''  均价:{0:.2f}'''.format( self.average)
 
-        print ''' 换手率(%):''', self.turnover
-        print '''成交量(手):''', self.volumn
-        print '''  成交金额:''', self.total
+        print '''   换手率(%):{0:.2f}'''.format( self.turnover)
+        print '''  成交量(手):{0:.2f}'''.format( self.volumn)
+        print '''成交金额(万):{0:.2f}'''.format( self.total/10000)
+        print '''资金流入(万):{0:.2f}'''.format( (self.total-self.volumn*self.open)/10000)
+
+        print
         pass
     pass
 
@@ -82,7 +86,7 @@ def print_up_fast():
         except:
             pass
         pass
-    print "up fast count:",up_count
+    print "up fast count:",up_count," out of ",len(stock_day_list)
     pass
 
 def print_dw_fast():
@@ -93,6 +97,10 @@ def print_dw_fast():
             dw_count+=1
         except:
             pass
-    print "dw fast count:",dw_count
+    print "dw fast count:",dw_count," out of ",len(stock_day_list)
     pass
+
+def print_latest_days(count):
+    for i in range(0,count):
+        stock_day_list[i].log()
 

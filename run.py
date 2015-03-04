@@ -13,20 +13,32 @@ def script(cmd):
 
 if __name__  == "__main__":
     read_csv("sample/600561.csv")
-    theory_up_down_days_count()
+    #theory_up_down_days_count()
     #theory_pre_next_count()
-    theory_price_change_fast(10)
-
-    print_up_fast()
-    print_dw_fast()
-
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-m",  "--message",  help="this is sample python script", action='store_true')
+    parser.add_argument("-u", "--Tup", help="theory: price up fast with setting percent")
+    parser.add_argument("-d", "--Tdown", help="theory: price down fast with setting percent")
+    parser.add_argument("-a", "--day", help="print the recent given N days detail")
+    #parser.add_argument("-d", "--Tdown", help="theory: price down fast", action='store_true')
     args = parser.parse_args()
-    if args.message:
-        print "start script"
-        ## TODO,  to be added here
-        print "end script"
-    else:
-        parser.print_help()
+    if args.Tup:
+        try:
+            theory_price_change_fast(float(args.Tup))
+            print_up_fast()
+        except:
+            print parser.print_help()
+    if args.Tdown:
+        try:
+            theory_price_change_fast(float(args.Tdown))
+            print_dw_fast()
+        except:
+            print parser.print_help()
+    if args.day:
+        try:
+            print_latest_days(int(args.day))
+        except:
+            print parser.print_help()
+        pass
+    pass
+
