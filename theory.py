@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv, sys
-from stock_class import *
+from stock_data import *
 
 # my database for all data
 # 资金回流

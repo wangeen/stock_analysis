@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv, sys
-from stock_class import stock_day, stock_day_list
+from stock_data import stock_day, stock_day_list
 
 def day_string_to_int(day):
     pass
