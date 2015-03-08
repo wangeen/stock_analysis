@@ -2,14 +2,43 @@
 
 
 class s_date:
-    def __init__(self, date):
-        items = date.split('-')
-        self.year = items[0]
-        self.month = items[1]
-        self.day = items[2]
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
 
     def __str__(self):
         return "{0}/{1}/{2}".format(self.year,self.month,self.day)
+
+    def __ge__(self,other):
+        if self.year<other.year:
+            return False
+        if self.year>other.year:
+            return True
+        if self.month<other.month:
+            return False
+        if self.month>other.month:
+            return True
+        if self.day<other.day:
+            return False
+        if self.day>other.day:
+            return True
+        return True
+
+    def __le__(self,other):
+        if self.year<other.year:
+            return True
+        if self.year>other.year:
+            return False
+        if self.month<other.month:
+            return True
+        if self.month>other.month:
+            return False
+        if self.day<other.day:
+            return True
+        if self.day>other.day:
+            return False
+        return True
     pass
 
 # up fast property of day
@@ -41,7 +70,8 @@ class s_property_dw:
 # the stock price and volumn information of one day
 class s_stock_day:
     def __init__(self, day, open, high, low, close, volumn,total,  turnover):
-        self.day = s_date(day)
+        items = day.split('-')
+        self.day = s_date(year=int(items[0]),month=int(items[1]),day=int(items[2]))
 
         self.open = open
         self.high = high
@@ -60,25 +90,33 @@ class s_stock_day:
             return True
         return False
 
-    def log(self):
-        print '''        日期: {0}'''.format( self.day)
-        print '''      开盘价: {0:.2f}'''.format( self.open)
-        print '''      最高价: {0:.2f}'''.format( self.high)
-        print '''      最低价: {0:.2f}'''.format( self.low)
-        print '''      收盘价: {0:.2f}'''.format( self.close)
-        print '''        幅度: {0:.2f}'''.format((self.close-self.open)/self.open*100)
-        print '''        均价: {0:.2f}'''.format( self.average)
-
-        print '''   换手率(%): {0:.2f}'''.format( self.turnover)
-        print '''  成交量(手): {0:.2f}'''.format( self.volumn)
-        print '''成交金额(万): {0:.2f}'''.format( self.total/10000)
-        print '''资金流入(万): {0:.2f}'''.format( (self.total-self.volumn*self.open)/10000)
-
-        print
-        pass
+    def __str__(self):
+        str  = '''        日期: {0}\n'''.format( self.day)
+        str += '''      开盘价: {0:.2f}\n'''.format( self.open)
+        str += '''      最高价: {0:.2f}\n'''.format( self.high)
+        str += '''      最低价: {0:.2f}\n'''.format( self.low)
+        str += '''      收盘价: {0:.2f}\n'''.format( self.close)
+        str += '''        幅度: {0:.2f}\n'''.format((self.close-self.open)/self.open*100)
+        str += '''        均价: {0:.2f}\n'''.format( self.average)
+        str += '''   换手率(%): {0:.2f}\n'''.format( self.turnover)
+        str += '''  成交量(手): {0:.2f}\n'''.format( self.volumn)
+        str += '''成交金额(万): {0:.2f}\n'''.format( self.total/10000)
+        str += '''资金流入(万): {0:.2f}\n'''.format( (self.total-self.volumn*self.open)/10000)
+        return str
     pass
 
+    def __repr__(self):
+        return self.__str__()
+
 stock_day_list = []
+
+def get_sub_day_list(s_date_begin,s_date_end):
+    sub_day_list = []
+    for item in stock_day_list:
+        if item.day>=s_date_begin and item.day<=s_date_end :
+            sub_day_list.append(item)
+        pass
+    return sub_day_list
 
 def print_up_fast():
     up_count = 0
@@ -110,5 +148,5 @@ def print_dw_fast():
 
 def print_latest_days(count):
     for i in range(0,count):
-        stock_day_list[i].log()
+        print stock_day_list[i]
 
