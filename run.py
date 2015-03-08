@@ -17,7 +17,8 @@ if __name__  == "__main__":
 
     sub_day_list = get_sub_day_list(s_date(year=2014,month=12,day=1),s_date(year=2015,month=4,day=1))
     print sub_day_list
-    plot_main(sub_day_list)
+    #plot_main(sub_day_list)
+    plot_candlestick(sub_day_list)
 
     if os.path.exists(config.output_path):
         script("rm -rf {0}".format(config.output_path))
