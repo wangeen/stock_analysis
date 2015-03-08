@@ -6,8 +6,11 @@ from stock_data import *
 # 资金回流
 # 价格的大波动和资金流向的关系
 # 少量的投入就会引起价格的大波动
+# 换手率和价格波动的关系
 # 利用T＋1分析问题
 
+# 累计资金净流入
+# 活跃股票统计
 def theory_up_down_days_count():
     print '''检测上涨下降天数'''
     previous_close = stock_day_list[0].average

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv, sys
-from stock_data import stock_day, stock_day_list
+from stock_data import s_stock_day, stock_day_list
 
 def day_string_to_int(day):
     pass
@@ -37,7 +37,7 @@ def read_csv(fname):
                 str_volumn = float(row[11].strip())
                 str_total = float(row[12].strip())
                 if str_close>0 and str_high>0 and str_low>0 and str_open>0:
-                    one_day_info = stock_day(day=str_day, open=str_open, high=str_high, low=str_low, close=str_close, volumn=str_volumn, total=str_total, turnover=str_turnover)
+                    one_day_info = s_stock_day(day=str_day, open=str_open, high=str_high, low=str_low, close=str_close, volumn=str_volumn, total=str_total, turnover=str_turnover)
                     #one_day_info.log()
                     stock_day_list.append(one_day_info)
             except:

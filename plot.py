@@ -1,4 +1,11 @@
 import matplotlib.pyplot as plt
-plt.plot([1,2,3,4])
-plt.ylabel('some numbers')
-plt.show()
+from stock_data import *
+
+def plot_main():
+    average_list =[]
+    for day in stock_day_list:
+        average_list.append(day.average)
+        pass
+    plt.plot(average_list)
+    plt.ylabel('Price')
+    plt.show()
